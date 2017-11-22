@@ -26,9 +26,10 @@
     
     return $result;
   }
-  function getDataPengajuan(){
+  function getDataSearch(){
+    $id = $_POST['search'];
     $model  = new model();
-    $result = $model->getPengajuan();
+    $result = $model->getSearch($id);
     
     return $result;
   }
@@ -50,21 +51,21 @@
 	}
 
   function update(){
-    $item['id_karyawan']  = $_POST['id'];
-    $item['username']     = $_POST['user'];
-    $item['password']     = $_POST['pass'];
-    $item['namaKaryawan'] = $_POST['nama'];
+    $item['no_pelanggan']  = $_POST['id'];
+    $item['nama_lengkap']     = $_POST['nama'];
+    $item['luas_lahan']     = $_POST['lahan'];
+    $item['golongan'] = $_POST['gol'];
+    $item['tipe_bangunan'] = $_POST['tipe'];
     $item['alamat']       = $_POST['alamat'];
-    $item['tanggalLahir'] = $_POST['lahir'];
-    $item['unit']         = $_POST['jabatan'];
-    $item['jenisKelamin'] = $_POST['jenis'];
-    $item['tanggalKerja'] = $_POST['kerja'];
-    $_SESSION['AAA']      = $_POST['nama'];
+    $item['tgl_langganan'] = $_POST['tanggal'];
+    $item['tarif']         = "0";
+    $item['standLalu'] = "0";
+    $item['standKini'] = "0";
     $model                = new model();
-    $result               = $model->updateKaryawan($item);
-
+    $result               = $model->updatePelanggan($item);
           $this->config['router']->redirect('FrontController','home');
   }
+
 	
 	
     function login(){

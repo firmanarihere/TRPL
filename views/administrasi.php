@@ -93,7 +93,9 @@ $c = new administrasi("administrasi");
 		
 		<div id="pembayaranTagihan" class="tab-pane fade in">
 		<div class="search">
-		 Nomor Pelanggan<input type="text"><a href="#"><img src="./assets/img/menu/cari.png" alt="Search"></a>
+    <form method="post" action="?c=administrasi&f=search">
+		 Nomor Pelanggan<input type="text" name="search"><button type="submit"><img src="./assets/img/menu/cari.png" alt="Search"></button>
+    </form>
 	 	</div>
 	  <div class="create-wrapper">
 	  <div class="create">
@@ -180,38 +182,39 @@ $c = new administrasi("administrasi");
 	  </div>
   </div>
 		
-	<div id="kelolaPelangganBaru" class="tab-pane fade in">
+	<div id="kelolaPelangganUpdate" class="tab-pane fade in">
+    <form method="post" action="?c=administrasi&f=update">
 	  <div class="create-wrapper no-src">
 	  <div class="create">
 	  	<table width="800" border="0">
   <tbody>
     <tr>
       <td>ID Pelanggan</td>
-      <td><input type="text"></td>
+      <td><input type="text" name="id"></td>
     </tr>
     <tr>
       <td>Nama Lengkap</td>
-      <td><input type="text"></td>
+      <td><input type="text" name="nama"></td>
     </tr>
     <tr>
       <td>Luas Lahan</td>
-      <td><input type="text"></td>
+      <td><input type="text" name="lahan"></td>
     </tr>
     <tr>
       <td>Golongan</td>
-      <td><input type="text"></td>
+      <td><input type="text" name="gol"></td>
     </tr>
     <tr>
       <td>Tipe Bangunan</td>
-      <td><input type="text"></td>
+      <td><input type="text" name="tipe"></td>
     </tr>
     <tr>
       <td>Alamat</td>
-      <td><input type="text"></td>
+      <td><input type="text" name="alamat"></td>
     </tr>
     <tr>
       <td>Tanggal Langganan</td>
-      <td><input type="text"></td>
+      <td><input type="text" name="tanggal"></td>
     </tr>
     
   </tbody>
@@ -224,7 +227,7 @@ $c = new administrasi("administrasi");
 	  </div>
   </div>
   
-  	<div id="kelolaPelangganUpdate" class="tab-pane fade in">
+  	<div id="kelolaPelangganBaru" class="tab-pane fade in">
       <form mothod="post" action="?c=administrasi&f=insert">
 	  <div class="create-wrapper no-src">
 	  <div class="create">

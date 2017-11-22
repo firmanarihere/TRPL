@@ -1,7 +1,7 @@
 <?php
-  include('./models/manajer.php');
+  include('./models/pencatatMeter.php');
 
-  class manajer {
+  class pencatatMeter {
     private $config;
 
     function __construct($config){
@@ -15,16 +15,19 @@
 
 	function getData(){
 		$model  = new model();
-		$result = $model->getKaryawan();
+		$result = $model->getJadwal();
 		
 		return $result;
 	}
 
-  function getDataLaporan(){
+  function getDataSearch(){
+    $id     = $_POST['search'];
     $model  = new model();
-    $result = $model->getLaporan();
+    $result = $model->getSearch($id);
     
     return $result;
+    
+          $this->config['router']->redirect('FrontController','home');
   }
   function getDataPengajuan(){
     $model  = new model();

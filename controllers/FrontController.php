@@ -50,7 +50,7 @@
         include('./views/manajer.php');
       }
       else{
-        include('./views/administrasi.php');
+        include('./views/pencatatMeter.php');
       }
     }
   }

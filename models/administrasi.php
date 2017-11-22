@@ -16,8 +16,8 @@
       return $result;
     }
 
-    function getPengajuan(){
-      $result   = $this->db->query("select * from pengajuan");
+    function getSearch($id){
+      $result   = $this->db->query("select * from pelanggan where no_pelanggan = $id");
       return $result;
     }
 	
@@ -30,8 +30,8 @@
 		  $this->db->insert("pelanggan",$item);
 	 }
 
-   function updateKaryawan(array $item){
-      $this->db->update("karyawan",$item);
+   function updatePelanggan(array $item){
+      $this->db->update("pelanggan",$item);
 
    }
   }

@@ -6,13 +6,13 @@
       $this->db = new Database('localhost','3306','trpl2','root','');
     }
 
-    function getKaryawan(){
-      $result   = $this->db->query("select * from karyawan");
+    function getJadwal(){
+      $result   = $this->db->query("select * from jadwalPencatatan");
       return $result;
     }
 
-    function getLaporan(){
-      $result   = $this->db->query("select * from laporan");
+    function getSearch($id){
+      $result   = $this->db->query("select * from pelanggan where no_pelanggan = $id");
       return $result;
     }
 
