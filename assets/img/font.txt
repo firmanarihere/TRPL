@@ -1,0 +1,15 @@
+font : Copperplate Gothic Bold
+
+Ukuran :
+
+LOGIN
+10px
+
+Username (Arial)
+6px
+
+Password
+6px
+
+Tombol Login
+6px

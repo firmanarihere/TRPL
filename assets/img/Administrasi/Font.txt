@@ -1,0 +1,15 @@
+font : Arial
+
+pdamjember.co.id (3) italic
+
+ADMINISTRASI (5) bold
+
+Susilo BY (4)
+
+152412 (4)
+
+Menu Utama (5) italic
+
+Kelola Pelanggang (4)
+
+Home dan lain-lain (5)
