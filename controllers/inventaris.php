@@ -49,7 +49,7 @@
     $item['id_karyawan'] = $_POST['idKaryawan'];
     $item['jumlah']     = $_POST['jumlah'];
     $item['harga'] = $_POST['harga'];
-    $item['status']     = null;
+    $item['status']     = 'belum disetujui';
     $model                = new model();
     $result               = $model->insertPengajuan($item);
           $this->config['router']->redirect('FrontController','home');
@@ -65,6 +65,18 @@
     $model                = new model();
     $result               = $model->insertPenggunaan($item);
           $this->config['router']->redirect('FrontController','home');
+  }
+
+  function updatePemakaian(){
+    $item['id_penggunaan']  = $_POST['idPenggunaan'];
+    $item['id_barang'] = $_POST['idBarang'];
+    $item['tanggal'] = $_POST['tgl'];
+    $item['tanggungJawab']     = $_POST['jawab'];
+    $item['jumlah'] = $_POST['jumlah'];
+    $item['keterangan']     = $_POST['keterangan'];
+    $model                = new model();
+    $result               = $model->updatePenggunaan($item);
+          $this->config['router']->redirect2('FrontController','home',"#pemakaian");
   }
 
   function update(){

@@ -21,7 +21,7 @@
         $result     = $frontModel->authenticate($_POST['username'],$_POST['password']);
         if(count($result)>0){
           $_SESSION['id']       = $result[0]['id_karyawan'];
-          $_SESSION['username'] = $result[0]['username'];
+          $_SESSION['username'] = $result[0]['namaKaryawan'];
           $_SESSION['jabatan']  = $result[0]['unit'];
           $this->config['router']->redirect('FrontController','home');
         }else{

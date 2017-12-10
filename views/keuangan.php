@@ -25,9 +25,9 @@ $c = new keuangan("keuangan");
 		<div class="profile-box-pic">
 			<img src="./assets/img/Administrasi/User.png">
 			<div class="profile-box-text">
-				<p>Keuangan</p>
-				Susilawati bambang Yudayaniwati
-				<label>12345</label>
+        <p><?php echo $_SESSION['jabatan']; ?></p>
+        <?php echo $_SESSION['username']; ?>
+        <label><?php echo $_SESSION['id']; ?></label>
 			</div>
 		</div>
 	</div>
@@ -77,38 +77,28 @@ $c = new keuangan("keuangan");
     <tr>
       <th class="table-top" scope="col">ID Laporan</th>
       <th class="table-top" scope="col">Nama Barang</th>
-      <th class="table-top" scope="col">Jenis Barang</th>
+      <th class="table-top" scope="col">ID Karyawan</th>
       <th class="table-top" scope="col">Harga</th>
       <th class="table-top" scope="col">Jumlah Barang</th>
       <th class="table-top" scope="col">Status</th>
     </tr>
+    <?php
+      foreach($c->getDataPengajuan() as $row){
+      echo"
     <tr>
-      <td>Tes;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-		<td>
-  			<a href="#"><img alt="Terima"></a>
-   			<a href="#"><img alt="Tolak"></a>
-   		</td>
+      <td>".$row['id_pengajuan']."</td>
+      <td><".$row['id_barang']."</td>
+      <td>".$row['id_karyawan']."</td>
+      <td>".$row['jumlah']."</td>
+      <td>".$row['harga']."</td>
+    <td>
+        <a href=''><img alt='Terima'></a>
+        <a href=''><img alt='Tolak'></a>
+      </td>
     </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
+      ";
+        }
+      ?>
   </tbody>
 </table>
 
@@ -123,33 +113,28 @@ $c = new keuangan("keuangan");
   <table width="850" height="300" border="0">
   <tbody>
     <tr>
-      <th class="table-top" scope="col">ID Barang</th>
+      <th class="table-top" scope="col">ID Laporan</th>
       <th class="table-top" scope="col">Nama Barang</th>
+      <th class="table-top" scope="col">ID Karyawan</th>
       <th class="table-top" scope="col">Harga</th>
-      <th class="table-top" scope="col">Aktifitas</th>
+      <th class="table-top" scope="col">Jumlah Barang</th>
       <th class="table-top" scope="col">Status</th>
     </tr>
+    <?php
+      foreach($c->getDataPengajuanKonfirm() as $row){
+      echo"
     <tr>
-      <td>Tes;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
+      <td>".$row['id_pengajuan']."</td>
+      <td><".$row['id_barang']."</td>
+      <td>".$row['id_karyawan']."</td>
+      <td>".$row['jumlah']."</td>
+      <td>".$row['harga']."</td>
+    <td>".$row['status']."</td>
+      </tr>
+      ";
+        }
+      ?>
+    
   </tbody>
 </table>
 

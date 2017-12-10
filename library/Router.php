@@ -19,5 +19,9 @@
       $getParam = (!empty($controller)?"?c=$controller&f=$function":"");
       header("Location:?c=$controller&f=$function");
     }
+    function redirect2($controller, $function, $form){
+      $getParam = (!empty($controller)?"?c=$controller&f=$function":"");
+      header("Location:?c=$controller&f=$function$form");
+    }
   }
 ?>

@@ -12,7 +12,8 @@
     }
 
     function getSearch($id){
-      $result   = $this->db->query("select * from pelanggan where no_pelanggan = $id");
+      $result   = $this->db->query("select * from pelanggan where no_pelanggan = '".$id."'");
+      $_SESSION['s']=$id;
       return $result;
     }
 
@@ -30,8 +31,15 @@
 		  $this->db->insert("karyawan",$item);
 	 }
 
-   function updateKaryawan(array $item){
-      $this->db->update("karyawan",$item);
+   function updatePelanggan(array $item){
+    $query="UPDATE pelanggan SET 
+      nama_lengkap ='".$item['nama_lengkap']."',
+      golongan = '".$item['golongan']."',
+      alamat = '".$item['alamat']."',
+      standLalu = '".$item['standLalu']."',
+      standKini = '".$item['standKini']."'
+      WHERE no_pelanggan = '".$item['no_pelanggan']."'";
+      $this->db->execute($query);
 
    }
   }

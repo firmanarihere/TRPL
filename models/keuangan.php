@@ -21,6 +21,10 @@
       return $result;
     }
 	
+    function getPengajuanKonfirm(){
+      $result   = $this->db->query("select * from pengajuan");
+      return $result;
+    }
 	function getKaryawanId($id){
       $result   = $this->db->query("select * from karyawan where id_karyawan = '".$id."'");
       return $result;

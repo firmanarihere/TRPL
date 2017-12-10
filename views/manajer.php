@@ -1,6 +1,7 @@
 <?php
   include("./controllers/manajer.php");
   $c = new manajer('manajer');
+  //echo $_SESSION['a'];
 ?>
 <script>
 function update(id, nama, kel, lahir, kerja, alamat, jabatan, user, pass){
@@ -74,7 +75,7 @@ function update(id, nama, kel, lahir, kerja, alamat, jabatan, user, pass){
   <?php
   foreach($c->getData() as $row){
   ?>
-    <tr href="#updateKaryawan" onclick="update('<?php echo $row['id_karyawan']; ?>','<?php echo $row['namaKaryawan']; ?>','<?php echo $row['jenisKelamin']; ?>','<?php echo $row['tanggalKerja']; ?>','<?php echo $row['alamat']; ?>','<?php echo $row['unit']; ?>','<?php echo $row['username']; ?>','<?php echo $row['password']; ?>')" data-toggle="pill">
+    <tr href="#updateKaryawan" onclick="update('<?php echo $row['id_karyawan']; ?>','<?php echo $row['namaKaryawan']; ?>','<?php echo $row['jenisKelamin']; ?>','<?php echo $row['tanggalLahir']; ?>','<?php echo $row['tanggalKerja']; ?>','<?php echo $row['alamat']; ?>','<?php echo $row['unit']; ?>','<?php echo $row['username']; ?>','<?php echo $row['password']; ?>')" data-toggle="pill">
       <td><?php echo $row['id_karyawan']; ?></td>
       <td><?php echo $row['namaKaryawan']; ?></td>
       <td><?php echo $row['jenisKelamin']; ?></td>
@@ -220,6 +221,7 @@ function update(id, nama, kel, lahir, kerja, alamat, jabatan, user, pass){
       <th class="table-top" scope="col">Nama Laporan</th>
       <th class="table-top" scope="col">Jenis Laporan</th>
       <th class="table-top" scope="col">Keterangan</th>
+      <th class="table-top" scope="col">Tanggal</th>
     </tr>
      <?php
       foreach($c->getDataLaporan() as $row){
@@ -229,6 +231,7 @@ function update(id, nama, kel, lahir, kerja, alamat, jabatan, user, pass){
       <td><?php echo $row['aktifitas']; ?></td>
       <td><?php echo $row['keterangan']; ?></td>
       <td><?php echo $row['jumlahUang']; ?></td>
+      <td><?php echo $row['tanggal']; ?></td>
     </tr>
     <?php
       }
@@ -247,33 +250,49 @@ function update(id, nama, kel, lahir, kerja, alamat, jabatan, user, pass){
   <table width="800" border="0">
   <tbody>
     <tr>
-      <th class="table-top" scope="col">ID Barang</th>
-      <th class="table-top" scope="col">Nama Barang</th>
-      <th class="table-top" scope="col">Jenis Barang</th>
-      <th class="table-top" scope="col">Jumlah Barang</th>
-      <th class="table-top" scope="col">Status</th>
+      <th class="table-top" scope="col" colspan="2">Grafik Tahun INI</th>
     </tr>
+    <?php
+    $months[0] = "Januari";
+    $months[1] = "Februari";
+    $months[2] = "Maret";
+    $months[3] = "April";
+    $months[4] = "Mei";
+    $months[5] = "Juni";
+    $months[6] = "Juli";
+    $months[7] = "Agustus";
+    $months[8] = "September";
+    $months[9] = "Oktober";
+    $months[10] = "November";
+    $months[11] = "Desember";
+    $total = 0;
+    $percent = 0;
+    $i= 0;
+    $i2 = 0;
+    while($i!=12) {
+      foreach ($c->getDataLaporanIni($i+1) as $key) {
+      # code...
+      $total+=$key['uang'];
+      }
+      $i++;
+    }
+    while($i2!=12) {
+      
+      foreach ($c->getDataLaporanIni($i2+1) as $key) {
+      # code...
+      if (empty($key['uang'])) {
+        $percent = 0*100;
+      }
+      else{
+        $percent = $key['uang']/$total*100;
+      }
+     ?>
     <tr>
-      <td>Tes;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td width="100"><?php echo $months[$i2]; ?></td>
+      <td><div style="background-color: red;width:<?php echo $percent; ?>%;">.<?php echo $key['uang']; ?></div></td>
     </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
+
+    <?php }  $i2++; } ?>
   </tbody>
 </table>
 
@@ -306,8 +325,8 @@ function update(id, nama, kel, lahir, kerja, alamat, jabatan, user, pass){
       <td><?php echo $row['jumlah']; ?></td>
       <td><?php echo $row['harga']; ?></td>
       <td>
-        <button>setuju</button>
-        <button>tidak setuju</button>
+        <a href="?c=manajer&f=setuju&id=<?php echo $row['id_pengajuan']; ?>"><button>setuju</button></a>
+        <a href="?c=manajer&f=tidak&id=<?php echo $row['id_pengajuan']; ?>"><button>tidak setuju</button></a>
       </td>
     </tr>
     <?php

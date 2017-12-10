@@ -32,6 +32,14 @@
     
     return $result;
   }
+
+  
+  function getDataPengajuanKonfirm(){
+    $model  = new model();
+    $result = $model->getPengajuanKonfirm();
+    
+    return $result;
+  }
 	
 	function insert(){
 		$item['id_karyawan']  = $_POST['id'];
